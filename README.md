@@ -12,8 +12,8 @@ Information on how to install, run, build, and develop the project are available
 
 ## Maintainers
 t1v0
-	-[@0xt1v0](https://twitter.com/0xt1v0)
-	-0xt1v0@gmail.com
+- [@0xt1v0](https://twitter.com/0xt1v0)
+- 0xt1v0@gmail.com
 
 ## Security
 If you identify any security issues in the project, please contact the maintainers privately. We will work with you to resolve the issue. Your support is highly appreciated.
