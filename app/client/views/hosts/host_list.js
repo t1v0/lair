@@ -9,6 +9,14 @@ Template.hostList.events({
     Meteor.call('enableHostFlag', this.projectId, this._id)
   },
 
+  'click .service-flag-enabled': function () {
+      Meteor.call('disableServiceFlag', this.projectId, this._id)
+  },
+
+   'click .service-flag-disabled': function () {
+      Meteor.call('enableServiceFlag', this.projectId, this._id)
+   },
+
   'click #flag-filter-enable': function () {
     Session.set('hostListFlagFilter', 'enabled')
   },
@@ -43,6 +51,14 @@ Template.hostList.events({
     Meteor.call('setHostStatus', this.projectId, this._id, status)
   },
 
+   'click .service-status': function () {
+       var status = StatusMap[StatusMap.indexOf(this.status) + 1]
+       if (StatusMap.indexOf(this.status) === 4) {
+           status = StatusMap[0]
+       }
+       Meteor.call('setServiceStatus', this.projectId, this._id, status)
+   },
+
   'click .remove-tag': function (event, tpl) {
     var hostId = event.target.id.replace('remove-tag-', '')
     Meteor.call('removeHostTag', tpl.data.projectId, hostId, this.valueOf())
@@ -59,3 +75,21 @@ Template.hostList.events({
     Session.set('hostViewLimit', 10000)
   }
 })
+
+Template.hostList.helpers({
+    services: function(pid, hid) {
+        var query = {
+            projectId: pid,
+            hostId: hid
+        }
+
+        return Services.find(query, {
+            sort: {
+                port: 1
+            },
+            limit: 10000
+        }).fetch()
+    }
+    }
+
+)

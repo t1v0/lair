@@ -43,6 +43,43 @@
                 <span class="u-pull-right right">{{hostnames.[0]}}</span>
                 <span class="u-pull-right right">{{os.fingerprint}}</span>
               </div>
+              <div class="row">
+
+                {{#each notes}}
+                  <span class="u-pull-left left note">{{#linkTo route="hostNoteList" id=../projectId hid=../_id}}{{this.title}}{{/linkTo}}</span>
+                {{/each}}
+                {{#each files}}
+                  <span class="u-pull-left left file"></span>
+                {{/each}}
+              </div>
+              {{#if services projectId _id}}
+                <table>
+                  <tr>
+                  <th>PORT</th>
+                  <th>SERVICE</th>
+                  <th>PRODUCT</th>
+                  <th>FLAG</th>
+                  <th>STATUS</th>
+                  <th>NOTES</th>
+                  </tr>
+                {{#each services projectId _id}}
+                  <tr>
+                    <td><span class="left u-pull-left">{{#linkTo route="serviceIssueList" id=projectId hid=hostId sid=_id}}{{port}}/{{protocol}}{{/linkTo}}</span></td>
+                    <td><span class="left u-pull-left">{{service}}</span></td>
+                    <td><span class="left u-pull-left">{{product}}</span></td>
+                    {{#if isFlagged}}
+                        <td><span class="u-pull-left"><i class="fa fa-flag service-flag-enabled clickable"></i></span></td>
+                    {{else}}
+                        <td><span class="u-pull-left"><i class="fa fa-flag-o service-flag-disabled clickable"></i></span></td>
+                    {{/if}}
+                    <td><span class="status-span u-pull-left clickable service-status {{status}}">&nbsp;</span></td>
+                    {{#each notes}}
+                      <td><span class="u-pull-right right note">{{#linkTo route="serviceNoteList" id=../projectId hid=../hostId sid=../_id}}{{this.title}}{{/linkTo}}</span></td>
+                    {{/each}}
+                  </tr>
+                {{/each}}
+                </table>
+              {{/if}}
             </li>
           {{/each}}
         </ul>
