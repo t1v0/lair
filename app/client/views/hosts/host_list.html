@@ -2,7 +2,7 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-inline">
           <li><button id="grey" class="button host-status-button lair-grey {{hostStatusButtonActive 'grey'}}">&nbsp;</button></li>
           <li><button id="blue" class="button host-status-button lair-blue {{hostStatusButtonActive 'blue'}}">&nbsp;</button></li>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-hosts">
           {{#each hosts}}
             <li>
@@ -40,20 +40,19 @@
                 {{#each tags}}
                   <span class="left u-pull-left tag">{{this}}&nbsp;<i id="remove-tag-{{../_id}}" class="clickable remove-tag fa fa-times"></i></span>
                 {{/each}}
-                <span class="u-pull-right right">{{hostnames.[0]}}</span>
-                <span class="u-pull-right right">{{os.fingerprint}}</span>
+                <span class="u-pull-right right"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}</span>
+                <span class="u-pull-right right"><label>OS:&nbsp;</label>{{os.fingerprint}}</span>
               </div>
               <div class="row">
-
                 {{#each notes}}
-                  <span class="u-pull-left left note">{{#linkTo route="hostNoteList" id=../projectId hid=../_id}}{{this.title}}{{/linkTo}}</span>
+                  <span class="u-pull-left left clickable note" data-id={{this._id}}>{{this.title}}</span>
                 {{/each}}
                 {{#each files}}
-                  <span class="u-pull-left left file"></span>
+                  <span class="u-pull-left left file">{{filename}}</span>
                 {{/each}}
               </div>
               {{#if services projectId _id}}
-                <table>
+                <table class="services-table">
                   <tr>
                   <th>PORT</th>
                   <th>SERVICE</th>
@@ -74,7 +73,7 @@
                     {{/if}}
                     <td><span class="status-span u-pull-left clickable service-status {{status}}">&nbsp;</span></td>
                     {{#each notes}}
-                      <td><span class="u-pull-right right note">{{#linkTo route="serviceNoteList" id=../projectId hid=../hostId sid=../_id}}{{this.title}}{{/linkTo}}</span></td>
+                      <td><!--<span class="u-pull-right right note">{{#linkTo route="serviceNoteList" id=../projectId hid=../hostId sid=../_id}}{{this.title}}{{/linkTo}}</span>--><span class="u-pull-right right note">{{this.title}}</span></td>
                     {{/each}}
                   </tr>
                 {{/each}}
@@ -86,11 +85,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <p>Showing {{hosts.length}} of {{total}} hosts</p>
       </div>
       {{#if moreToShow}}
-        <div class="six columns">
+        <div class="col-md-6">
           <ul class="list-unstyled list-inline">
             <li class="u-pull-right"><button id="load-all" class="button">Show All</button></li>
             <li class="u-pull-right"><button id="load-more" class="button" style="margin-right: 10px">Show More</button></li>
@@ -101,3 +100,5 @@
   </div>
 </div>
 </template>
+
+

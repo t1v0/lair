@@ -2,7 +2,7 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <button id="remove-people" class="button lair-red"><i class="fa fa-trash fa-lg"></i></button>
         <input type="text" id="people-search" placeholder="Search.." value="{{savedSearch}}">
         <i class="fa fa-remove fa-lg clickable" id="remove-people-search" title="Clear text search"></i>
@@ -12,8 +12,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="eight columns">
-        <table class="u-full-width">
+      <div class="col-md-8">
+        <table class="table">
           <thead>
             <tr>
               <th class="onepix"></th>
@@ -40,7 +40,7 @@
           </tbody>
         </table>
       </div>
-      <div class="four columns">
+      <div class="col-md-4">
       {{#momentum plugin='right-to-left'}}
       {{#if person}}
       {{#with person}}

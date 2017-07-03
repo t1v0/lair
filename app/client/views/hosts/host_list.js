@@ -73,6 +73,10 @@ Template.hostList.events({
 
   'click #load-all': function () {
     Session.set('hostViewLimit', 10000)
+  },
+
+  'click .note': function () {
+    Modal.show('notesModal', this)
   }
 })
 

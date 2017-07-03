@@ -5,7 +5,7 @@
   </div>
   <div class="container host-content">
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <p>Attach a file to the host. Note, because of how Lair is architected with Meteor and a separate API server, access to retrieve files is not authenticated. Files are saved and retreived using a random 48 character alphanumeric string. Access to files is dependent on the URL staying a secret. As a result, links should be treated as a secret.</p>
         <form>
           <input type="file" id="file-input"><br />
@@ -15,7 +15,7 @@
           <p>Uploading... {{progress}}%</p>
         {{/if}}
       </div>
-      <div class="six columns">
+      <div class="col-md-6">
         <button id="remove-files" class="button lair-red"><i class="fa fa-trash fa-lg"></i></button>
         <ul class="list-unstyled list-alternate">
         {{#each host.files}}

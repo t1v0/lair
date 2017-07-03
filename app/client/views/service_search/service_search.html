@@ -2,20 +2,20 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <p>Searching returns a unique list of services and associated hosts. All fields are optional and case insensitive.</p>
         <form>
-          <input name="port" class="input-small" type="number" min="0" max="65535" placeholder="Port" step="any" />
-          <input name="protocol" class="input-small" type="text" placeholder="Protocol" />
-          <input name="service" class="input-medium" type="text" placeholder="Service (e.g. http)" />
-          <input name="product" class="input-medium" type="text" placeholder="Product (e.g. nginx)" />
+          <input name="port" class="input-md col-md-2" type="number" min="0" max="65535" placeholder="Port" step="any" />
+          <input name="protocol" class="input-md col-md-2" type="text" placeholder="Protocol" />
+          <input name="service" class="input-md col-md-2" type="text" placeholder="Service (e.g. http)" />
+          <input name="product" class="input-md col-md-2" type="text" placeholder="Product (e.g. nginx)" />
           <button id="services-submit" class="button"><i class="fa fa-search fa-wt"></i>&nbsp;Search</button>
           <button id="services-clear" class="button"><i class="fa fa-remove fa-wt"></i>&nbsp;Clear</button>
         </form>
       </div>
     </div>
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         {{#unless services}}
         {{#if searched}}
           <p>No services found.</p>
@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="eight columns">
-        <table class="u-full-width">
+      <div class="col-md-8">
+        <table class="table">
           <thead>
             <tr>
               <th>Port</th>
@@ -66,7 +66,7 @@
         </ul>
         {{/if}}
       </div>
-      <div class="four columns">
+      <div class="col-md-4">
         <h5>Hosts</h5>
         <button id="download-services" class="button button-primary">Download List</button>
         <br />

@@ -1,7 +1,7 @@
 <template name="serviceGist">
 <div class="container">
   <div class="row">
-    <div class="four columns">
+    <div class="col-md-4">
       <ul class="list-unstyled gist">
         <li>Port:&nbsp;{{service.port}}/{{service.protocol}}</li>
         <li>Service:&nbsp;{{service.service}}</li>
@@ -17,29 +17,29 @@
         </li>
       </ul>
     </div>
-    <div class="four columns">
+    <div class="col-md-4">
       <ul class="list-unstyled gist">
         <li>Host:&nbsp;{{#linkTo route="hostServiceList" id=projectId hid=host._id}}{{host.ipv4}}{{/linkTo}}</li>
       </ul>
     </div>
-    <div class="four columns gist">
+    <div class="col-md-4 gist">
       <form id="service-gist-set-service">
         <div class="row">
-          <div class="six columns">
-            <input type="text" name="service" class="u-full-width" placeholder="Service">
+          <div class="col-md-6">
+            <input type="text" name="service" class="form-control" placeholder="Service">
           </div>
-          <div class="two columns">
-            <button class="button button-primary">Set Service</button>
+          <div class="col-md-2">
+            <button class="btn-primary">Set Service</button>
           </div>
         </div>
       </form>
       <form id="service-gist-set-product">
         <div class="row">
-          <div class="six columns">
-            <input type="text" name="product" class="u-full-width" placeholder="Product">
+          <div class="col-md-6">
+            <input type="text" name="product" class="form-control" placeholder="Product">
           </div>
-          <div class="two columns">
-            <button class="button button-primary">Set Product</button>
+          <div class="col-md-2">
+            <button class="btn-primary">Set Product</button>
           </div>
         </div>
       </form>

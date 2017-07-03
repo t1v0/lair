@@ -5,7 +5,7 @@
   </div>
   <div class="container host-content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-inline">
           {{#if flagFilter}}
             <li><button id="flag-filter-disable" class="button"><i class="fa fa-flag fa-lg"></i></button></li>
@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="eight columns">
-        <table class="u-full-width">
+      <div class="col-md-8">
+        <table class="table">
           <thead>
             <tr>
               <th class="onepix"><input id="select-all-shown" name="select-all-shown" type="checkbox"></th>
@@ -51,12 +51,12 @@
           </tbody>
         </table>
       </div>
-      <div class="four columns">
+      <div class="col-md-4">
         <form>
-          <input type="text" name="path" placeholder="Path" class="u-full-width" />
-          <input type="text" name="response-code" placeholder="Response Code" class="u-full-width" />
-          <input class="u-full-width" type="number" name="port" min="0" max="65535" step="any" placeholder="Port"/>
-          <button type="submit" class="button button-primary">Add Directory</button>
+          <input type="text" name="path" placeholder="Path" class="form-control" />
+          <input type="text" name="response-code" placeholder="Response Code" class="form-control" />
+          <input class="form-control" type="number" name="port" min="0" max="65535" step="any" placeholder="Port"/>
+          <button type="submit" class="btn-primary">Add Directory</button>
         </form>
       </div>
     </div>

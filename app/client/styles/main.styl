@@ -19,7 +19,8 @@ html
 .epiceditor
   min-height 500px
 
-table
+.table
+  border-spacing 10px
   input
     margin 0
 
@@ -168,16 +169,13 @@ a
 .clickable
   cursor pointer
 
-.u-pull-left
-  float left
-
 .content-navd
   padding-top 50px
+
 .content
   padding-top 60px
+  overflow: hidden
 
-.container
-  min-width: 95%
 .main
   z-index 10
   position relative
@@ -310,13 +308,17 @@ a
     text-decoration none
   .right
     margin-left 10px
+    margin-right 10px
   .left
     margin-right 10px
 
 .list-hosts-top
   margin-bottom 5px
+  margin-left: 5px
+  margin-right: 5px
   span:not(:last-child)
     margin-right 10px
+
 
 .host-list-ip
   width 120px
@@ -326,6 +328,9 @@ a
 
 .service-row
   padding 10px 10px 10px 10px
+  margin-left: 0px
+  margin-right: 0px
+  
 .list-services
   input
     margin 0
@@ -431,3 +436,14 @@ a
     text-decoration none
   span:not(:last-child)
     margin-right 10px
+
+.u-pull-left
+  float: left
+
+.u-pull-right
+  float:right
+
+.services-table
+  border-spacing: 10px
+  border-collapse: separate
+

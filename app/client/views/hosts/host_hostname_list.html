@@ -5,16 +5,16 @@
   </div>
   <div class="container host-content">
     <div class="row">
-      <div class="five columns">
+      <div class="col-md-5">
         <button id="remove-hostnames" class="button lair-red"><i class="fa fa-trash fa-lg"></i></button>
       </div>
-      <div class="seven columns">
+      <div class="col-md-7">
         <form>
           <div class="row">
-            <div class="eight columns">
+            <div class="col-md-8">
               <input type="text"  class="u-full-width" name="hostname" placeholder="Hostname">
             </div>
-            <div class="two columns">
+            <div class="col-md-4">
               <button class="button button-primary">Add Hostname</button>
             </div>
           </div>
@@ -22,14 +22,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="five columns">
+      <div class="col-md-5">
         <ul class="list-unstyled list-alternate">
         {{#each host.hostnames}}
           <li><input class="hostname-checked" id="{{this}}" type="checkbox"><span class="hostname right-mark">{{this}}</span></li>
         {{/each}}
         </ul>
       </div>
-      <div class="seven columns">
+      <div class="col-md-7">
         <ul class="list-unstyled">
         {{#each links}}
           <li><a href="{{this}}" target="_blank">{{this}}</a></li>

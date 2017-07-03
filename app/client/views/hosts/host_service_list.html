@@ -5,7 +5,7 @@
   </div>
   <div class="container host-content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-inline">
           <li><button id="grey" class="button borderless service-status-button lair-grey {{serviceStatusButtonActive 'grey'}}">&nbsp;</button></li>
           <li><button id="blue" class="button borderless service-status-button lair-blue {{serviceStatusButtonActive 'blue'}}">&nbsp;</button></li>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-services">
           {{#each services}}
             <li>
@@ -48,11 +48,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <p>Showing {{services.length}} of {{total}} services</p>
       </div>
       {{#if moreToShow}}
-      <div class="six columns">
+      <div class="col-md-6">
         <ul class="list-unstyled list-inline">
           <li class="u-pull-right"><button id="load-all" class="button">Show All</button></li>
           <li class="u-pull-right"><button id="load-more" class="button" style="margin-right: 10px">Show More</button></li>
