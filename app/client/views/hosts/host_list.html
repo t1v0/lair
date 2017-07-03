@@ -38,8 +38,12 @@
               </div>
               <div class="row">
                   <div class="col-md-12">
-                  <span class="u-pull-left"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}&nbsp;</span>
-                  <span class="u-pull-left"><label>OS:&nbsp;</label>{{os.fingerprint}}&nbsp;</span>
+                  {{#if hostnames.[0]}}
+                    <span class="u-pull-left"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}&nbsp;</span>
+                  {{/if}}
+                  {{#if os.fingerprint}}
+                    <span class="u-pull-left"><label>OS:&nbsp;</label>{{os.fingerprint}}&nbsp;</span>
+                  {{/if}}
                   {{#each tags}}
                     <span class="left u-pull-right tag">{{this}}&nbsp;<i id="remove-tag-{{../_id}}" class="clickable remove-tag fa fa-times"></i></span>
                   {{/each}}
