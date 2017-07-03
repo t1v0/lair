@@ -44,12 +44,24 @@
                 <span class="u-pull-right right"><label>OS:&nbsp;</label>{{os.fingerprint}}</span>
               </div>
               <div class="row">
-                {{#each notes}}
-                  <span class="u-pull-left left clickable note" data-id={{this._id}}>{{this.title}}</span>
-                {{/each}}
-                {{#each files}}
-                  <span class="u-pull-left left file">{{filename}}</span>
-                {{/each}}
+                <div class="col-md-12">
+                  {{#if notes}}
+                    <label class="u-pull-left">Host Notes:&nbsp;</label>
+                  {{/if}}
+                  {{#each notes}}
+                    <span class="u-pull-left left clickable note" data-id={{this._id}}>{{this.title}}</span>
+                  {{/each}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  {{#if files}}
+                    <label class="u-pull-left">Files: &nbsp;</label>
+                  {{/if}}
+                  {{#each files}}
+                    <span class="u-pull-left left file"><a class="file-href" href="{{url}}" target="_blank">{{this.fileName}}</a></span>
+                  {{/each}}
+                </div>
               </div>
               {{#if services projectId _id}}
                 <table class="services-table">
