@@ -37,11 +37,16 @@
                 <span class="u-pull-right">{{lastModifiedBy}}</span>
               </div>
               <div class="row">
-                {{#each tags}}
-                  <span class="left u-pull-left tag">{{this}}&nbsp;<i id="remove-tag-{{../_id}}" class="clickable remove-tag fa fa-times"></i></span>
-                {{/each}}
-                <span class="u-pull-right right"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}</span>
-                <span class="u-pull-right right"><label>OS:&nbsp;</label>{{os.fingerprint}}</span>
+                  <div class="col-md-12">
+                  <span class="u-pull-left"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}&nbsp;</span>
+                  <span class="u-pull-left"><label>OS:&nbsp;</label>{{os.fingerprint}}&nbsp;</span>
+                  {{#each tags}}
+                    <span class="left u-pull-right tag">{{this}}&nbsp;<i id="remove-tag-{{../_id}}" class="clickable remove-tag fa fa-times"></i></span>
+                  {{/each}}
+                  {{#if tags}}
+                    <span class="u-pull-right"><label>Tags:&nbsp;</label></span>
+                  {{/if}}
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
