@@ -73,7 +73,7 @@
                     {{/if}}
                     <td><span class="status-span u-pull-left clickable service-status {{status}}">&nbsp;</span></td>
                     {{#each notes}}
-                      <td><!--<span class="u-pull-right right note">{{#linkTo route="serviceNoteList" id=../projectId hid=../hostId sid=../_id}}{{this.title}}{{/linkTo}}</span>--><span class="u-pull-right right note">{{this.title}}</span></td>
+                      <td><!--<span class="u-pull-right right note">{{#linkTo route="serviceNoteList" id=../projectId hid=../hostId sid=../_id}}{{this.title}}{{/linkTo}}</span>--><span class="u-pull-right right clickable note">{{this.title}}</span></td>
                     {{/each}}
                   </tr>
                 {{/each}}
