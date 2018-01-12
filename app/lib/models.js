@@ -65,7 +65,9 @@ Models = { // eslint-disable-line
       created: '',
       updated: '',
       description: '',
-      handle: ''
+      handle: '',
+      startIPv4Address: 0,
+      endIPv4Address: 0
     }
   },
 

@@ -94,6 +94,6 @@ Template.hostList.helpers({
             limit: 10000
         }).fetch()
     }
-    }
+  }
 
 )

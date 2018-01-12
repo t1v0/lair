@@ -2,7 +2,7 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <h5>Client Updates</h5>
         <p>By enabling this feature you will be allowing users to run insert, remove, and updates on projects without any validation beyond confirming ownership. This has security implications and should be used with caution.</p>
         {{#if allowClientSideUpdates.enabled}}
@@ -14,7 +14,7 @@
     </div>
     <hr />
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <h5>Persist Filters</h5>
         <p>By enabling this feature you will be be persisting view filters (i.e. status filters, count filters, etc.) across page loads. This can make it easier for you to overlook items of a certain status in the event that you forget this feature is enabled.</p>
         {{#if persistViewFilters.enabled}}
@@ -26,20 +26,20 @@
     </div>
     <hr />
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <h5>View</h5>
         <p>Number of hosts/services/etc. to show per page</p>
         
         <form id="set-view-increment">
           <div class="row">
-            <div class="four columns">
+            <div class="col-md-4">
               {{#if numViewItems.value}}
                 <input type="text"  class="u-full-width" name="num-items" placeholder="{{numViewItems.value}}">
               {{else}}
                 <input type="text"  class="u-full-width" name="num-items" placeholder="25">
               {{/if}}
             </div>
-            <div class="two columns">
+            <div class="col-md-2">
               <button class="button button-primary">Save</button>
             </div>
           </div>

@@ -5,14 +5,14 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="six columns log-box">
+      <div class="col-md-6 log-box">
         <ul class="list-unstyled">
           {{#each project.commands}}
           <li><span style="padding-left: 5px">{{tool}}: {{command}}</span></li>
           {{/each}}
         </ul>
       </div>
-      <div class="six u-pull-right columns log-box">
+      <div class="col-md-6 u-pull-right log-box">
         <ul class="list-unstyled">
         {{#each project.droneLog}}
         <li><span style="padding-left: 5px">{{this}}</span></li>

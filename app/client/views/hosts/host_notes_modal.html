@@ -4,12 +4,31 @@
 <div class="modal fade">
   <div class="modal-dialog" >
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{this.title}}</h4>
+      <div class="row modal-header">
+        <div class="col-md-12">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <label>Title:&nbsp;</label><textbox class="form-control">{{this.title}}</textbox>
+        </div>
       </div>
       <div class="modal-body">
-        <textarea class="form-control" rows="10">{{this.content}}</textarea>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Port:&nbsp;</label><textbox class="form-control">{{this.port}}</textbox>
+          </div>
+          <div class="col-md-6">
+            <label>Service:&nbsp;</label><textbox class="form-control">{{this.service}}</textbox>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Description:&nbsp;</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <textarea class="form-control" rows="10">{{this.content}}</textarea>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -2,15 +2,15 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="five columns">
+      <div class="col-md-5">
          <div class="row">
-            <div class="twelve columns">
+            <div class="col-md-12">
               <button id="remove-notes" class="button lair-red"><i class="fa fa-trash fa-lg"></i></button>
               <button id="new-note" class="u-pull-right button button-primary">New Note</button>
             </div>
           </div>
         <div class="row">
-          <div class="twelve columns">
+          <div class="col-md-12">
             <ul class="list-unstyled list-alternate">
             {{#each project.notes}}
               <li>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="seven columns">
+      <div class="col-md-7">
         {{#if note}}
         <ul class="list-unstyled">
           <li>{{note.title}}</li>

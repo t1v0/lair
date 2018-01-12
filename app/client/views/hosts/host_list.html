@@ -1,8 +1,14 @@
 <template name="hostList">
 <div class="main">
+	{{#if netblocks}}
+    <div class="content-navd">
+	  {{> hostSubnetNav}}
+    </div>
+    {{/if}}
   <div class="container content">
-    <div class="row">
+    <div class="row bottom15">
       <div class="col-md-12">
+        <span class="u-pull-left"><label>Filter By:&nbsp;</label></span>
         <ul class="list-unstyled list-inline">
           <li><button id="grey" class="button host-status-button lair-grey {{hostStatusButtonActive 'grey'}}">&nbsp;</button></li>
           <li><button id="blue" class="button host-status-button lair-blue {{hostStatusButtonActive 'blue'}}">&nbsp;</button></li>
@@ -18,6 +24,7 @@
           <li><i class="fa fa-remove fa-lg clickable" id="remove-host-list-search" title="Clear text search"></i></li>
           <li class="u-pull-right"><a href="/projects/{{projectId}}/hosts/new" class="button button-primary">New Host</a></li>
         </ul>
+
       </div>
     </div>
     <div class="row">
@@ -25,25 +32,21 @@
         <ul class="list-unstyled list-hosts">
           {{#each hosts}}
             <li>
-              <div class="row list-hosts-top">
-                <span class="host-list-ip u-pull-left">{{#linkTo route="hostServiceList" id=projectId hid=_id }}{{ipv4}}{{/linkTo}}</span>
-                {{#if isFlagged}}
-                  <span class="u-pull-left"><i class="fa fa-flag flag-enabled clickable"></i></span>
-                {{else}}
-                  <span class="u-pull-left"><i class="fa fa-flag-o flag-disabled clickable"></i></span>
-                {{/if}}
-                <span class="status-span u-pull-left clickable host-status {{status}}">&nbsp;</span>
-                <span class="u-pull-left">{{statusMessage}}</span>
-                <span class="u-pull-right">{{lastModifiedBy}}</span>
-              </div>
               <div class="row">
-                  <div class="col-md-12">
+                <div class="col-md-3">
+                  <span class="host-list-ip u-pull-left"><label>IP:&nbsp;</label>{{#linkTo route="hostServiceList" id=projectId hid=_id }}{{ipv4}}{{/linkTo}}</span>
+                </div>
+                <div class="col-md-3">
                   {{#if hostnames.[0]}}
                     <span class="u-pull-left"><label>Hostname:&nbsp;</label>{{hostnames.[0]}}&nbsp;</span>
                   {{/if}}
+                </div>
+                <div class="col-md-3">
                   {{#if os.fingerprint}}
                     <span class="u-pull-left"><label>OS:&nbsp;</label>{{os.fingerprint}}&nbsp;</span>
                   {{/if}}
+                </div>
+                <div class="col-md-3">
                   {{#each tags}}
                     <span class="left u-pull-right tag">{{this}}&nbsp;<i id="remove-tag-{{../_id}}" class="clickable remove-tag fa fa-times"></i></span>
                   {{/each}}
@@ -51,6 +54,23 @@
                     <span class="u-pull-right"><label>Tags:&nbsp;</label></span>
                   {{/if}}
                 </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  {{#if isFlagged}}
+                    <span class="u-pull-left"><label>Flagged?:&nbsp;</label><i class="fa fa-flag flag-enabled clickable"></i></span>
+                  {{else}}
+                    <span class="u-pull-left"><label>Flagged?:&nbsp;</label><i class="fa fa-flag-o flag-disabled clickable"></i></span>
+                  {{/if}}
+                </div>
+                <div class="col-md-6">
+                  <span class="u-pull-left"><label>Status:&nbsp;</label></span>
+                  <span class="status-span u-pull-left clickable host-status {{status}}">&nbsp;</span>
+                  <span class="u-pull-left">&nbsp;{{statusMessage}}</span>
+                </div>
+                <div class="col-md-3">  
+                  <span class="u-pull-right"><label>Last Modified By:&nbsp;</label>{{lastModifiedBy}}</span>
+               </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
@@ -80,7 +100,7 @@
                   <th>PRODUCT</th>
                   <th>FLAG</th>
                   <th>STATUS</th>
-                  <th>NOTES</th>
+                  <th>SERVICE NOTES</th>
                   </tr>
                 {{#each services projectId _id}}
                   <tr>

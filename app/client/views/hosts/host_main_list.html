@@ -1,0 +1,14 @@
+<template name="hostMainList">
+<div class="main">
+	{{#if netblocks}}
+    <div class="content-navd">
+	  {{> hostSubnetNav}}
+    </div>
+    {{/if}}
+  <div class="container content">
+    {{> hostList}}
+  </div>
+</div>
+</template>
+
+

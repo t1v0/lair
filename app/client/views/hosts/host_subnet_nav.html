@@ -1,0 +1,12 @@
+<template name="hostSubnetNav">
+  <div class="subnav">
+    <div class="container">
+      <ul>
+        <li class="{{isMainActive 'hostList' }}"><a href="/projects/{{projectId}}/hosts">ALL HOSTS</a></li>
+        {{#each netblocks}}
+        <li class="{{isSubnetActive _id}}"><a href="/projects/{{projectId}}/hosts/bysubnet/{{_id}}">{{cidr}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</template>

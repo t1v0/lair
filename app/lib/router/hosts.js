@@ -99,12 +99,14 @@ Router.route('/projects/:id/hosts', {
           ]
         }
         return Hosts.find(query, {
-          sort: {
-            longIpv4Addr: 1
-          },
-          limit: limit
-        }).fetch()
-      }
+              sort: {
+                longIpv4Addr: 1
+              },
+              limit: limit
+            }).fetch()
+      },
+      
+      netblocks: Netblocks.find({}).fetch()
     }
   }
 })
@@ -151,6 +153,122 @@ Router.route('/projects/:id/hosts/:hid/:page/prev', {
     var next = getNextHost(this.params.id, this.params.hid, -1)
     this.redirect('/projects/' + next.projectId + '/hosts/' + next.hostId + '/' + this.params.page, {}, {replaceState: true})
     this.next()
+  }
+})
+
+Router.route('/projects/:id/hosts/bysubnet/:sid', {
+  name: 'hostSubnetList',
+  template: 'hostList',
+  controller: 'ProjectController',
+  onRun: function () {
+    if (Settings.findOne({
+      setting: 'persistViewFilters',
+      enabled: true
+    })) {
+      this.next()
+      return
+    }
+    Session.set('viewIncrement', 25)
+    Session.set('hostViewLimit', 25)
+    Session.set('hostListSearch', null)
+    Session.set('hostListStatusButtongrey', null)
+    Session.set('hostListStatusButtonblue', null)
+    Session.set('hostListStatusButtongreen', null)
+    Session.set('hostListStatusButtonorange', null)
+    Session.set('hostListStatusButtonred', null)
+    Session.set('hostListFlagFilter', null)
+    this.next()
+  },
+  data: function () {
+    // Handle updating of the number of items to view by default
+    var numViewItems = 25
+    var numViewItemsSetting = Settings.findOne({setting: 'numViewItems'})
+    if (numViewItemsSetting) {
+      numViewItems = numViewItemsSetting.value
+    }
+    if (Session.get('hostViewLimit') === Session.get('viewIncrement')) {
+      Session.set('hostViewLimit', numViewItems)
+    } else if (Session.get('hostViewLimit') < numViewItems) {
+      Session.set('hostViewLimit', numViewItems)
+    }
+    Session.set('viewIncrement', numViewItems)
+
+    var project = Projects.findOne({
+      _id: this.params.id
+    })
+    if (!project) {
+      return null
+    }
+    var total = Hosts.find({
+      projectId: this.params.id
+    }).count()
+    var search = Session.get('hostListSearch')
+    var self = this
+    return {
+      moreToShow: function () {
+        return total > Session.get('hostViewLimit')
+      },
+      flagFilter: Session.get('hostListFlagFilter'),
+      total: total,
+      projectId: self.params.id,
+      projectName: project.name,
+      savedSearch: search,
+      hostStatusButtonActive: function (color) {
+        if (Session.equals('hostListStatusButton' + color, 'disabled')) {
+          return 'disabled'
+        }
+      },
+      hosts: function () {
+        var limit = Session.get('hostViewLimit') || Session.get('viewIncrement') || 25
+        var net = Netblocks.find({_id: self.params.sid}).fetch()
+        var query = {
+          projectId: self.params.id,
+          $where: function() { 
+              return IP.inSubNet(this.ipv4, net[0].cidr)
+            },
+          status: {
+            $in: []
+          }
+        }
+        if (Session.equals('hostListFlagFilter', 'enabled')) {
+          query.isFlagged = true
+        }
+        if (!Session.equals('hostListStatusButtongrey', 'disabled')) {
+          query.status.$in.push('lair-grey')
+        }
+        if (!Session.equals('hostListStatusButtonblue', 'disabled')) {
+          query.status.$in.push('lair-blue')
+        }
+        if (!Session.equals('hostListStatusButtongreen', 'disabled')) {
+          query.status.$in.push('lair-green')
+        }
+        if (!Session.equals('hostListStatusButtonorange', 'disabled')) {
+          query.status.$in.push('lair-orange')
+        }
+        if (!Session.equals('hostListStatusButtonred', 'disabled')) {
+          query.status.$in.push('lair-red')
+        }
+        var search = Session.get('hostListSearch')
+        if (search) {
+          query.$or = [
+            {ipv4: {$regex: search, $options: 'i'}},
+            {statusMessage: {$regex: search, $options: 'i'}},
+            {'os.fingerprint': {$regex: search, $options: 'i'}},
+            {hostnames: {$regex: search, $options: 'i'}},
+            {lastModifiedBy: {$regex: search, $options: 'i'}},
+            {tags: search}
+          ]
+        }
+        return Hosts.find(query, {
+              sort: {
+                longIpv4Addr: 1
+              },
+              limit: limit
+            }).fetch()
+      },
+      
+      netblocks: Netblocks.find({}).fetch()
+    }
   }
 })
 

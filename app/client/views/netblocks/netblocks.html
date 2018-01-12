@@ -2,7 +2,7 @@
 <div class="main">
   <div class="content container">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <button id="remove-netblocks" class="button lair-red"><i class="fa fa-trash fa-lg"></i></button>
         <div class="u-pull-right">
           <a href="/projects/{{projectId}}/netblocks/new" class="button button-primary">New Netblock</a>
@@ -10,8 +10,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
-        <table class="u-full-width">
+      <div class="col-md-6">
+        <table class="table u-full-width">
           <thead>
             <tr>
               <th style="width: 1px"></th>
@@ -30,7 +30,7 @@
           </tbody>
         </table>
       </div>
-      <div class="six columns">
+      <div class="col-md-6">
       {{#if netblock}}
       <ul class="list-unstyled">
         <li>ASN: {{netblock.asn}}</li>

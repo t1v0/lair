@@ -2,7 +2,7 @@
 <div class="main">
   <div class="container content">
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <ul class="list-unstyled list-inline">
           <li><button id="grey" class="button issue-status-button lair-grey {{issueStatusButtonActive 'grey'}}">&nbsp;</button></li>
           <li><button id="blue" class="button issue-status-button lair-blue {{issueStatusButtonActive 'blue'}}">&nbsp;</button></li>
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="twelve columns">
+      <div class="col-md-12">
         <div style="line-height: 0"><span style="padding-left: 10px"><input id="select-all-shown" name="select-all-shown" type="checkbox"></span></div>
         <ul class="list-unstyled list-issues">
         {{#each issues}}
@@ -53,11 +53,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="six columns">
+      <div class="col-md-6">
         <p>Showing {{issues.length}} of {{total}} issues</p>
       </div>
       {{#if moreToShow}}
-        <div class="six columns">
+        <div class="col-md-6">
           <ul class="list-unstyled list-inline">
             <li class="u-pull-right"><button id="load-all" class="button">Show All</button></li>
             <li class="u-pull-right"><button id="load-more" class="button" style="margin-right: 10px">Show More</button></li>
