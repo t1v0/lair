@@ -1,10 +1,10 @@
 # lair
 Lair is a reactive attack collaboration framework and web application built with meteor.
 
-##Credit
+## Credit
 This is a private fork of the Lair Framework maintained by Tom Steele and Dan Kottmann.
 
-##Purpose
+## Purpose
 This is meant as a testbed for some changes that I personally wanted to see when I use Lair.
 
 ## Getting Started
